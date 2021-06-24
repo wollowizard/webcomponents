@@ -1,0 +1,18 @@
+:host {
+  display: flex;
+}
+
+svg #top_circle {
+  animation: loader-rotate 1s linear infinite;
+}
+
+@keyframes loader-rotate {
+  0% {
+    transform-origin: center;
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform-origin: center;
+    transform: rotateZ(360deg);
+  }
+}

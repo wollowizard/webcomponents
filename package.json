@@ -1,0 +1,81 @@
+{
+  "name": "sdb-dd-webcomponents",
+  "version": "0.0.18",
+  "description": "SDB DD Web Components",
+  "repository": {
+    "type": "git",
+    "url": "git+https://tiagobioucasunrise@bitbucket.org/sunrisedigitalbusiness/webcomponents.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://bitbucket.org/sunrisedigitalbusiness/webcomponents/issues"
+  },
+  "homepage": "https://bitbucket.org/sunrisedigitalbusiness/webcomponents#readme",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "engines": {
+    "node": ">=14.0.0 <=16"
+  },
+  "scripts": {
+    "start": "webpack serve --open",
+    "lint:js": "eslint --ext .js,.ts --ignore-path .gitignore .",
+    "lint:js:fix": "eslint --ext .js,.ts --ignore-path .gitignore --fix .",
+    "lint:css": "stylelint **/*.{css,scss} --ignore-path .gitignore",
+    "lint:css:fix": "stylelint **/*.{css,scss} --fix --ignore-path .gitignore",
+    "lint:all": "npm run lint:js & npm run lint:css",
+    "lint:all:fix": "npm run lint:js:fix & npm run lint:css:fix",
+    "lint": "npm run lint:all",
+    "build": "npm run lint:all:fix && webpack",
+    "test": "jest",
+    "test:watch": "npm run build && jest --watch --verbose false",
+    "test:update-snapshot": "jest --updateSnapshot",
+    "release": "standard-version",
+    "release:manual": "npm run release && git commit -m '[skip ci] Trigger from manual release command.' --allow-empty && git push --follow-tags origin master && publish:public",
+    "publish:public": "npm publish --access public",
+    "version": "echo $npm_package_version",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@jest-runner/electron": "^3.0.1",
+    "@types/jest": "^26.0.23",
+    "@typescript-eslint/eslint-plugin": "^4.23.0",
+    "@typescript-eslint/parser": "^4.23.0",
+    "autoprefixer": "^9.8.6",
+    "css-loader": "^5.2.4",
+    "electron": "^13.0.0",
+    "eslint": "^7.26.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "file-loader": "^6.2.0",
+    "html-loader": "^2.1.2",
+    "html-webpack-plugin": "^5.3.1",
+    "husky": "^6.0.0",
+    "jest": "^26.6.3",
+    "lint-staged": "^11.0.0",
+    "node-sass": "^6.0.0",
+    "postcss-loader": "^5.3.0",
+    "prettier": "^2.3.0",
+    "resolve-url-loader": "^4.0.0",
+    "sass-loader": "^10.2.0",
+    "standard-version": "^9.3.0",
+    "stylelint": "^13.13.1",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-standard": "^22.0.0",
+    "stylelint-prettier": "^1.2.0",
+    "stylelint-scss": "^3.19.0",
+    "styles-loader": "^3.0.0",
+    "ts-jest": "^26.5.6",
+    "ts-loader": "^9.1.2",
+    "typescript": "^4.2.4",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.37.0",
+    "webpack-cli": "^4.7.0",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "lit-element": "^2.5.1",
+    "sdb-dd-styles": "^0.0.18"
+  }
+}

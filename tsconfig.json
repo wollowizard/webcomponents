@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "module": "es2015",
+    "moduleResolution": "node",
+    "lib": ["es2017", "dom"],
+    "watch": false,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "inlineSources": true,
+    "strict": true,
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "declarationDir": "./dist",
+    "tsBuildInfoFile": "./dist/.tsbuildinfo",
+    "noUnusedLocals": false,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": false,
+    "noImplicitThis": true,
+    "experimentalDecorators": true,
+    "composite": true,
+    "importHelpers": true,
+    "strictNullChecks": false,
+    "allowSyntheticDefaultImports": true
+  },
+  "include": ["./src/**/*.ts"],
+  "exclude": [
+    "./node_modules",
+    "./src/**/*.spec.ts",
+    "./webpack.config.js",
+    "./dist/**/*"
+  ]
+}

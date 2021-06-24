@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Web Components</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+
+  <body>
+    <h1>Std button</h1>
+    <hr>
+    <h2>Base</h2>
+    <br>
+    <primary-button color="red" size="mobile">mobile</primary-button>
+    <primary-button color="red" size="desktop">desktop</primary-button>
+    <hr>
+    <h2>Loading</h2>
+    <br>
+    <primary-button color="red" size="mobile" loading>mobile</primary-button>
+    <primary-button color="red" size="desktop" loading>desktop</primary-button>
+    <hr>
+    <h2>Rounded</h2>
+    <br>
+    <primary-button color="red" size="mobile" loading rounded></primary-button>
+    <primary-button color="red" size="desktop" loading rounded></primary-button>
+    <hr>
+    <h2>Disabled</h2>
+    <br>
+    <primary-button color="red" size="mobile" disabled>mobile</primary-button>
+    <primary-button color="red" size="desktop" disabled>desktop</primary-button>
+    <hr>
+    <form onsubmit="handleSubmit(event)">
+      <input type="text" name="test">
+      <primary-button type="submit">Submit</primary-button>
+    </form>
+  </body>
+  <script>
+    function handleSubmit(e) {
+      console.log(new FormData(e.target).get('test'))
+    }
+  </script>
+
+</html>

@@ -1,0 +1,17 @@
+node_modules/
+src/
+dist/index.html
+
+# Development tools
+.browserslistrc
+.editorconfig
+.eslintrc.js
+.husky/
+.lintstagedrc
+.prettierrc
+.stylelintrc
+.vscode/
+postcss.config.js
+webpack.config.js
+tsconfig.json
+bitbucket-pipelines.yml

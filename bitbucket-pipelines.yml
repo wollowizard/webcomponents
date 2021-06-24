@@ -1,0 +1,74 @@
+image: node:16.0.0
+options:
+  max-time: 10
+definitions:
+  steps:
+    - step: &versions
+        name: Check Versions
+        clone:
+          enabled: false
+        script:
+          - node -v
+          - npm -v
+    - step: &install
+        name: Install packages
+        caches:
+          - node
+        script:
+          - npm install
+    - step: &linter
+        name: Lint files
+        caches:
+          - node
+        script:
+          - npm run lint
+    - step: &build
+        name: Build app
+        caches:
+          - node
+        script:
+          - npm run build
+        artifacts:
+          - dist/**
+    - step: &test
+        name: Test app
+        caches:
+          - node
+        script:
+          - apt-get update -y && apt-get install -y libgbm-dev libatk-bridge2.0-0 libgtk-3-0 libgconf-2-4 libasound2 libxtst6 libxss1 libnss3 xvfb
+          - Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
+          - npm run test
+        artifacts:
+          - dist/**
+    - step: &release
+        name: Release
+        deployment: production
+        caches:
+          - node
+        script:
+          - npm run release
+          - git commit -m "[skip ci] Trigger from pipelines release step." --allow-empty
+          - git push --follow-tags origin $BITBUCKET_BRANCH
+          - pipe: atlassian/npm-publish:0.2.0
+            variables:
+              NPM_TOKEN: $NPM_TOKEN
+pipelines:
+  default:
+    - step: *versions
+    - step: *install
+    - step: *linter
+  pull-requests:
+    '**':
+      - step: *versions
+      - step: *install
+      - step: *linter
+      - step: *build
+      - step: *test
+  branches:
+    master:
+      - step: *versions
+      - step: *install
+      - step: *linter
+      - step: *build
+      - step: *test
+      - step: *release
